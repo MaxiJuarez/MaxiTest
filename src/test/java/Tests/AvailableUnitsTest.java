@@ -9,14 +9,26 @@ package Tests;
 */
 
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class AvailableUnitsTest {
 
+    String baseURL = "https://aliexpress.com";
+
     @Test
     public void availableUnitsTest() {
 
+    //Setting path for windows chrome driver (replace for the folder in your PC)
     System.setProperty("webdriver.chrome.driver","C:\\automation\\MaxiTest\\MaxiTest\\driver\\chromedriver.exe");
+    //Creating chrome driver
+    WebDriver driver = new ChromeDriver();
+    //Maximizing browser window
+    driver.manage().window().maximize();
+    //Going to AliExpress website
+    driver.get(baseURL);
+
 
     }
 }
