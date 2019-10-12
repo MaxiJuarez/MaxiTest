@@ -9,6 +9,8 @@ package Tests;
 */
 
 
+import Pages.HomePage;
+import Pages.ResultsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -16,11 +18,13 @@ import org.testng.annotations.Test;
 public class AvailableUnitsTest {
 
     String baseURL = "https://aliexpress.com";
+    String query = "Iphone";
+    int pageNumber = 2;
 
     @Test
-    public void availableUnitsTest() {
+    public void availableUnitsTest() throws InterruptedException {
 
-    //Setting path for windows chrome driver (replace for the folder in your PC)
+    //Setting path for windows chrome driver (replace with the folder where you downloaded the project in your PC)
     System.setProperty("webdriver.chrome.driver","C:\\automation\\MaxiTest\\MaxiTest\\driver\\chromedriver.exe");
     //Creating chrome driver
     WebDriver driver = new ChromeDriver();
@@ -28,7 +32,13 @@ public class AvailableUnitsTest {
     driver.manage().window().maximize();
     //Going to AliExpress website
     driver.get(baseURL);
-
+    HomePage onHome = new HomePage(driver);
+    //Will close the "New user" popup if present
+    onHome.closePopUpIfPresent();
+    //Search for "Iphone"
+    ResultsPage onResults = onHome.performSearch(query);
+    //Scroll until pagination and click on second page
+    onResults.goToPage(2);
 
     }
 }
