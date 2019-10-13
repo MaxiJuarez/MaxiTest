@@ -1,44 +1,40 @@
 package Tests;
 
-
-/* Test steps:
-1. Enter www.aliexpress.com
-2. Search for "Iphone"
-3. Click on the second result
-4. Verify the amount of items available is at least one
-*/
-
-
 import Pages.HomePage;
+import Pages.ProductDetailsPage;
 import Pages.ResultsPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AvailableUnitsTest {
+public class AvailableUnitsTest extends BaseTest {
+
+    /* Test steps:
+    1. Enter www.aliexpress.com (A random popop might appear here, close it if it appears)
+    2. Search for "Iphone" (A random popop might appear here, close it if it appears)
+    3. Go to on the second page of results
+    4. Click on the second result (It opens on new tab)
+    5. Verify the amount of items available is at least one */
+
+    /// Driver configuration can be changed at BaseTest class - Currently configured for: Windows - Chrome browser ///
 
     String baseURL = "https://aliexpress.com";
-    String query = "Iphone";
-    int pageNumber = 2;
 
-    @Test
+    @Test()
     public void availableUnitsTest() throws InterruptedException {
+    String query = "Iphone";
 
-    //Setting path for windows chrome driver (replace with the folder where you downloaded the project in your PC)
-    System.setProperty("webdriver.chrome.driver","C:\\automation\\MaxiTest\\MaxiTest\\driver\\chromedriver.exe");
-    //Creating chrome driver
-    WebDriver driver = new ChromeDriver();
-    //Maximizing browser window
-    driver.manage().window().maximize();
     //Going to AliExpress website
     driver.get(baseURL);
     HomePage onHome = new HomePage(driver);
-    //Will close the "New user" popup if present
-    onHome.closePopUpIfPresent();
     //Search for "Iphone"
     ResultsPage onResults = onHome.performSearch(query);
     //Scroll until pagination and click on second page
-    onResults.goToPage(2);
-
+    onResults.goToNextPage();
+    //Click on the second listed product
+    ProductDetailsPage onProductDetails = onResults.clickOnSecondItem();
+    //Verify if quantity is > 0
+    boolean verificationResult = onProductDetails.verifyProductQuantity();
+    Assert.assertTrue(verificationResult, "Product doesn't have available items");
     }
+
 }
