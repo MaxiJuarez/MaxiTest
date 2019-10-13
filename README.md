@@ -9,7 +9,7 @@ Go to the BaseTest class and Change the config if you want to use another OS/dri
 
 To run the test execute the AvailableUnitsTest class under the /src/test/java/Tests folder.
 
-I could have configured this mini-framework with more complexity, like sending parameters through TestNG XML and creating the driver accordingly depending on OS, etc, on the local computer or to execute on some cloud service (such as browserstack) but I was told to keep it simple and not consume more than 5 hs. So I didn't include any desired capabilities either. I also didn't include a Loggre such as Log4j which I could have done.
+I could have configured this mini-framework with more complexity, like sending parameters through TestNG XML and creating the driver accordingly depending on OS, etc, on the local computer or to execute on some cloud service (such as browserstack) but I was told to keep it simple and not consume more than 5 hs. So I didn't include any desired capabilities either. I also didn't include a Logger such as Log4j which I could have done.
 
 If needed, I can use Rest Assured for Endpoints/API tests and SQL for performing queries on Databases.
 I also know how to execute mobile tests on Appium for both iOS and Android (on local device, simulator/emulator, or execution on browserstack).
