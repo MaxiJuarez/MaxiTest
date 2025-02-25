@@ -16,4 +16,4 @@ I also know how to execute mobile tests on Appium for both iOS and Android (on l
 I have created and configured automation frameworks from scratch that include FE testing (web and mobile apps) and BE testing (APIs and DBs).
 I have worked with developers to configure the FastLane plugin to automatically upload builds to browserstack under certain Custom ID's so that I can execute tests on the latest alpha/beta builds without updating my configs for any new build. I send them the 'curl' scripts and they include them on the plugin.
 
-For any doubt send me an email to: maxisebajuarez@gmail.com
+For any doubt send me an email to: maxijuarezdev@gmail.com
