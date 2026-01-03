@@ -1,4 +1,4 @@
-# Maximiliano Juarez
+# Maximiliano Juarez - This is part of a 2019 code challenge for a QA Automation position in which I was given limited time to build a small framework to implement one test.
 
 Since I've coded this on a Windows pc the test will work by default on Windows and it has chrome driver included on the /driver folder of the project.
 
